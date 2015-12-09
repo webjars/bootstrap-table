@@ -25,8 +25,8 @@
 
     <scm>
         <url>https://github.com/webjars/bootstrap-table</url>
-        <connection>git://github.com/webjars/bootstrap-table.git</connection>
-        <developerConnection>git://github.com/webjars/bootstrap-table.git</developerConnection>
+        <connection>scm:git:https://github.com/webjars/bootstrap-table.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/bootstrap-table.git</developerConnection>
         <tag>1.9.1</tag>
     </scm>
 
