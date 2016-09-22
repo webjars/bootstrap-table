@@ -52,7 +52,7 @@
             {
                 "paths": {
                     "bootstrap-table": "bootstrap-table",
-                    "bootstrap-table-min": "bootstrap-table.min",
+                    "bootstrap-table-min": "bootstrap-table.min"
                 },
                 "shim": {
                     "bootstrap-table": {
