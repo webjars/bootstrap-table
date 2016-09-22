@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap-table</artifactId>
-    <version>1.9.2-SNAPSHOT</version>
+    <version>1.9.1-1-SNAPSHOT</version>
     <name>bootstrap-table</name>
     <description>WebJar for Bootstrap Table</description>
     <url>http://webjars.org</url>
