@@ -1,16 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
-
-    <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap-table</artifactId>
-    <version>1.9.1-2-SNAPSHOT</version>
+    <version>1.15.5</version>
+    <packaging>jar</packaging>
+
     <name>bootstrap-table</name>
     <description>WebJar for Bootstrap Table</description>
     <url>http://webjars.org</url>
@@ -27,7 +28,7 @@
         <url>https://github.com/webjars/bootstrap-table</url>
         <connection>scm:git:https://github.com/webjars/bootstrap-table.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/bootstrap-table.git</developerConnection>
-        <tag>1.9.1</tag>
+        <tag>${project.version}</tag>
     </scm>
 
     <developers>
@@ -45,9 +46,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>1.9.1</upstream.version>
-        <upstream.url>https://github.com/wenzhixin/bootstrap-table/archive/${upstream.version}.zip</upstream.url>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
+
+        <upstream.url>https://codeload.github.com/wenzhixin/bootstrap-table/zip/${project.version}</upstream.url>
+        <destDir>
+            ${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}
+        </destDir>
         <requirejs>
             {
                 "paths": {
@@ -56,7 +59,7 @@
                 },
                 "shim": {
                     "bootstrap-table": {
-                        deps: ["jquery","bootstrap"],
+                        deps: ["jquery", "bootstrap"],
                         exports: 'BootstrapTable'
                     }
                 }
@@ -65,6 +68,7 @@
     </properties>
 
     <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -78,30 +82,30 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo message="download archive" />
-                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
-                                <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
-                                <echo message="moving resources" />
+                                <echo message="Download archive"/>
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
+                                <echo message="Unzip archive"/>
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip"
+                                       dest="${project.build.directory}"/>
+                                <echo message="Moving resources"/>
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}/dist" />
+                                    <fileset
+                                            dir="${project.build.directory}/${project.artifactId}-${project.version}/dist"/>
                                 </move>
                             </target>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
             </plugin>
-
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.6</version>
+                <version>1.6.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>sonatype-nexus-staging</serverId>
@@ -111,4 +115,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
