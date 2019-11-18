@@ -9,7 +9,7 @@
     </parent>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap-table</artifactId>
-    <version>1.15.5</version>
+    <version>1.15.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>bootstrap-table</name>
@@ -46,8 +46,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <upstream.url>https://codeload.github.com/wenzhixin/bootstrap-table/zip/${project.version}</upstream.url>
+        <upstream.version>1.15.5</upstream.version>
+        <upstream.url>https://codeload.github.com/wenzhixin/bootstrap-table/zip/${upstream.version}</upstream.url>
         <destDir>
             ${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}
         </destDir>
@@ -90,7 +90,7 @@
                                 <echo message="Moving resources"/>
                                 <move todir="${destDir}">
                                     <fileset
-                                            dir="${project.build.directory}/${project.artifactId}-${project.version}/dist"/>
+                                            dir="${project.build.directory}/${project.artifactId}-${upstream.version}/dist"/>
                                 </move>
                             </target>
                         </configuration>
